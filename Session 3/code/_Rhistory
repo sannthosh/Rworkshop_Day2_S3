@@ -1,0 +1,512 @@
+install.packages("RcolorBrewer")
+library(rattle)
+library(RColorBrewer)
+fancyRpartPlot(m1)
+## to find how the tree performs
+printcp(m1)
+plotcp(m1)
+##rattle()
+## Pruning Code
+ptree<- prune(m1, cp= 0.0015 ,"CP")
+printcp(ptree)
+fancyRpartPlot(ptree, uniform=TRUE,  main="Pruned Classification Tree")
+View(CTDF.dev)
+## Scoring syntax
+CTDF.dev$predict.class <- predict(m1, CTDF.dev, type="class")
+CTDF.dev$predict.score <- predict(m1, CTDF.dev)
+View(CTDF.dev)
+head(CTDF.dev)
+## deciling code
+decile <- function(x){
+deciles <- vector(length=10)
+for (i in seq(0.1,1,.1)){
+deciles[i*10] <- quantile(x, i, na.rm=T)
+}
+return (
+ifelse(x<deciles[1], 1,
+ifelse(x<deciles[2], 2,
+ifelse(x<deciles[3], 3,
+ifelse(x<deciles[4], 4,
+ifelse(x<deciles[5], 5,
+ifelse(x<deciles[6], 6,
+ifelse(x<deciles[7], 7,
+ifelse(x<deciles[8], 8,
+ifelse(x<deciles[9], 9, 10
+))))))))))
+}
+class(CTDF.dev$predict.score)
+## deciling
+CTDF.dev$deciles <- decile(CTDF.dev$predict.score[,2])
+View(CTDF.dev)
+sqrt(-17)
+x <- c("a", "b", "c")
+as.numeric(x)
+v1 <- c(30,100,5,45,125,4,9,0,134)
+sd(v1)
+var(v1)
+rohit <- c(2,15,137,100,5,32,0,97,13,6)
+sd(rohit)
+mean(rohit)
+sd(rohit)
+var(rohit)
+mean(v1)
+median(v1)
+mode(v1)
+v1 <- c(30,100,5,5,45,125,4,9,0,134)
+mean(v1)
+median(v1)
+mode(v1)
+v1.sort
+sort(v1)
+mode(sort(v1))
+quartile(v1)
+quantile(v1)
+length(v1)
+mean(v1)
+median(v1)
+quantile(v1)
+v1 <- c(30,100,5,5,45,125,4,9,0,134,0)
+length(v1)
+mean(v1)
+median(v1)
+mode(v1)
+quantile(v1)
+v1 <- c(30,100,5,6,45,125,4,9,0,134,0)
+length(v1)
+mean(v1)
+median(v1)
+mode(v1)
+quantile(v1)
+v1 <- c(3,6,7,11,13,22,30,40,44,50,52,61,68,80,94)
+length(v1)
+mean(v1)
+median(v1)
+mode(v1)
+quantile(v1)
+v2 <- c(3,6,7,11,13,22,30,40)
+median(v2)
+v1 <- c(3,6,7,11,13,22,30,40,44,50,52,61,68,80,94,95)
+length(v1)
+mean(v1)
+median(v1)
+mode(v1)
+quantile(v1)
+v1 <- c(3,6,7,11,13,22,30,40,44,50,52,61,68,80,94)
+length(v1)
+mean(v1)
+median(v1)
+mode(v1)
+quantile(v1)
+v3 <- c(40,44,50,52,61,68,80,94)
+median(v3)
+range(v1)
+range(rohit)
+x  = 1:5
+y  = c(1.1, 1.5, 2.9, 3.8, 5.2)
+sd = c(0.1, 0.3, 0.2, 0.2, 0.4)
+plot (x, y)
+#################
+rohit <- c(2,15,137,100,5,32,0,97,13,6)
+mean(rohit)
+sd(rohit)
+var(rohit)
+range(rohit)
+x <- seq(-10, 10, by = .1)
+y <- dnorm(x, mean = 2.5, sd = 0.5)
+plot(x,y)
+y <- dnorm(x, mean = 2.5, sd = 2)
+plot(x,y)
+y
+x <- c(2,2,2,2,2,3,3,3,4,4,4,4,5,5,6,7,9)
+y <- dnorm(x, mean = mean(x), sd = sd(x))
+plot(x,y)
+mean(x)
+x = c(2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)
+y <- dnorm(x, mean = mean(x), sd = sd(x))
+plot(x,y)
+mean(x)
+sd(x)
+###### categorical vaiable
+grade <- c("D","D","F","F","F","F","F","S","S","S","S","S","T","T","T",)
+###### categorical vaiable
+grade <- c("D","D","F","F","F","F","F","S","S","S","S","S","T","T","T")
+barplot(grade)
+barplot(table(grade))
+pie(table(grade))
+age <- seq(10,140,by=2)
+age
+hist(age)
+kurtosis(age)
+boxplot(age)
+x = c(2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)
+boxplot(x)
+x1 <- c(2,2,2,2,2,3,3,3,4,4,4,4,5,5,6,7,9)
+boxplot(x1)
+quantile(x1)
+v1 <- c(3,6,7,11,13,22,30,40,44,50,52,61,68,80,94)
+length(v1)
+mean(v1)
+median(v1)
+mode(v1)
+range(v1)
+quantile(v1)
+#################
+rohit <- c(2,15,137,100,5,32,0,97,13,6)
+mean(rohit)
+sd(rohit)
+var(rohit)
+range(rohit)
+#### Bell curve
+x <- seq(-10, 10, by = .1)
+y <- dnorm(x, mean = 2.5, sd = 2)
+plot(x,y)
+y <- dnorm(x, mean = mean(x), sd = sd(x))
+plot(x,y)
+y <- dnorm(x, mean = 2.5, sd = 2)
+plot(x,y)
+x = c(2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)
+y <- dnorm(x, mean = mean(x), sd = sd(x))
+plot(x,y)
+x <- c(2,2,2,2,2,3,3,3,4,4,4,4,5,5,6,7,9)
+y <- dnorm(x, mean = mean(x), sd = sd(x))
+plot(x,y)
+###### categorical vaiable
+grade <- c("D","D","F","F","F","F","F","S","S","S","S","S","T","T","T")
+table(grade)
+barplot(table(grade))
+pie(table(grade))
+age <- seq(10,140,by=2)
+age
+hist(age)
+boxplot(age)
+x = c(2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)
+x <- c(2,2,2,2,2,3,3,3,4,4,4,4,5,5,6,7,9)
+x = c(2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)
+boxplot(x)
+x <- c(2,2,2,2,2,3,3,3,4,4,4,4,5,5,6,7,9)
+boxplot(x)
+quantile(x)
+library(MASS);
+View(Cars93)
+dim(Cars93)
+Cars93$Type
+table(Cars93$Type)
+barplot <- ggplot(Cars93,aes(Type))
+#getting the library
+#install.packages("ggplot2")
+library(ggplot2)
+barplot <- ggplot(Cars93,aes(Type))
+barplot <- ggplot(Cars93,aes(Type)))
+barplot <- ggplot(Cars93,aes(Type))
+barplot
+#creating boxplot
+boxplot <- ggplot(Cars93,aes(Type,Price))+
+geom_boxplot(width = 0.5,fill="firebrick",color="cadetblue2",
+outlier.colour = "purple",outlier.shape = 2)+
+ggtitle("Boxplot of Price by Car Type")
+boxplot
+#creating bar chart
+barplot <- ggplot(Cars93,aes(Type))+
+geom_bar(width = 0.5,fill="royalblue4",color="red")+
+ggtitle("Vehicle Count by Category")
+barplot
+boxplot
+#creatting Bubble chart
+bubble<-ggplot(Cars93, aes(x=EngineSize, y=MPG.city)) +
+geom_point(aes(size=Price,color="red")) +
+scale_size_continuous(range=c(2,15)) +
+theme(legend.position = "bottom")
+bubble
+#creating Donut charts
+ggplot(Cars93) + geom_rect(aes(fill=Cylinders, ymax=Max.Price,
+ymin=Min.Price, xmax=4, xmin=3)) +
+coord_polar(theta="y") + xlim(c(0, 4))
+library(googleVis)
+head(state.x77)
+gmap <- gvisGeoMap(states, "state.name", "Area",
+options=list(region="US", dataMode="regions",
+width=900, height=600))
+plot(gmap)
+states <- data.frame(state.name, state.x77)
+gmap <- gvisGeoMap(states, "state.name", "Area",
+options=list(region="US", dataMode="regions",
+width=900, height=600))
+plot(gmap)
+#creating histograms
+histog <- ggplot(Cars93,aes(RPM))+
+geom_bar(width = 10.5,fill="firebrick",color="cadetblue2")+
+ggtitle("Histogram")
+histog
+#creating line charts
+linechart <- ggplot(Cars93,aes(RPM,Price))+
+geom_line(color="cadetblue4")+
+ggtitle("Line Charts")
+linechart
+#creating pie charts
+pp <- ggplot(Cars93, aes(x = factor(1), fill = factor(Type))) +
+geom_bar(width = 1)
+pp + coord_polar(theta = "y")
+v1 <- c(3,6,7,11,13,22,30,40,44,50,52,61,68,80,94)
+length(v1)
+mean(v1)
+median(v1)
+mode(v1)
+range(v1)
+quantile(v1)
+v2 <- c(3,6,7,11,13,22,30,40)
+median(v2)
+v3 <- c(40,44,50,52,61,68,80,94)
+median(v3)
+#################
+rohit <- c(2,15,137,100,5,32,0,97,13,6)
+mean(rohit)
+sd(rohit)
+var(rohit)
+range(rohit)
+#### Bell curve
+x <- seq(-10, 10, by = .1)
+y <- dnorm(x, mean = 2.5, sd = 2)
+plot(x,y)
+x = c(2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)
+mean(x)
+y <- dnorm(x, mean = mean(x), sd = sd(x))
+plot(x,y)
+x <- c(2,2,2,2,2,3,3,3,4,4,4,4,5,5,6,7,9)
+y <- dnorm(x, mean = mean(x), sd = sd(x))
+plot(x,y)
+###### categorical vaiable
+grade <- c("D","D","F","F","F","F","F","S","S","S","S","S","T","T","T")
+barplot(table(grade))
+###### categorical vaiable
+grade <- c("D","D","F","F","F","F","F","S","S","S","S","S","T","T","T")
+pie(table(grade))
+age <- seq(10,140,by=2)
+hist(age)
+boxplot(age)
+age <- seq(10,100,by=2):seq(101,140)
+hist(age)
+boxplot(age)
+age <- c(seq(10,100,by=2),seq(101,140))
+hist(age)
+boxplot(age)
+# Create a sample of 50 numbers which are incremented by 1.
+x <- seq(0,50,by = 1)
+# Create the binomial distribution.
+y <- dbinom(x,50,0.5)
+# Plot the graph for this sample.
+plot(x,y)
+# Create the binomial distribution.
+y <- dbinom(x,50,0.2)
+# Plot the graph for this sample.
+plot(x,y)
+x <- seq(0,50,by=1)
+y <- dbinom(x,50,0.2)
+plot(x,y)
+y <- dbinom(x,50,0.6)
+plot(x,y)
+x <- seq(0,100,by=1)
+y <- dbinom(x,100,0.6)
+plot(x,y)
+x <- seq(0,50,by=1)
+y <- dbinom(x,50,0.2)
+plot(x,y)
+y <- dbinom(x,30,0.2)
+plot(x,y)
+y <- dbinom(x,50,0.2)
+plot(x,y)
+# Create a sample of 50 numbers which are incremented by 1.
+x <- seq(0,50,by = 1)
+# Create the binomial distribution.
+y <- dbinom(x,50,0.2)
+# Plot the graph for this sample.
+plot(x,y)
+y1 <- dbinom(x,50,0.5)
+# Plot the graph for this sample.
+plot(x,c(y,y1))
+# Create the binomial distribution.
+y <- dbinom(x,50,0.2)
+# Plot the graph for this sample.
+plot(x,y)
+# Create the binomial distribution.
+y <- dbinom(x,50,0.5)
+# Plot the graph for this sample.
+plot(x,y)
+toss <- seq(1,3,by=1)
+prb <- dbinom(toss,2,0.5)
+plot(toss,prb)
+# Create a sample of 50 numbers which are incremented by 1.
+library(ggplot2)
+plot1 <- ggplot(df, aes(x = toss, y = prb)) + geom_bar(stat = "identity", col = "pink", fill = "pink") +
+scale_y_continuous(expand = c(0.01, 0)) + xlab("x") + ylab("Density") +
+labs(title = "dbinom(x, 20, 0.5)") + theme_bw(16, "serif") +
+theme(plot.title = element_text(size = rel(1.2), vjust = 1.5))
+plot1 <- ggplot(df, aes(toss,prb)) + geom_bar(stat = "identity", col = "pink", fill = "pink") +
+scale_y_continuous(expand = c(0.01, 0)) + xlab("x") + ylab("Density") +
+labs(title = "dbinom(x, 20, 0.5)") + theme_bw(16, "serif") +
+theme(plot.title = element_text(size = rel(1.2), vjust = 1.5))
+barplot(toss)
+barplot(toss,prb)
+df <- data.frame(toss,prb)
+plot1 <- ggplot(df, aes(x = toss, y = prb)) + geom_bar(stat = "identity", col = "pink", fill = "pink") +
+scale_y_continuous(expand = c(0.01, 0)) + xlab("x") + ylab("Density") +
+labs(title = "dbinom(x, 20, 0.5)") + theme_bw(16, "serif") +
+theme(plot.title = element_text(size = rel(1.2), vjust = 1.5))
+plot1
+prb
+toss
+prb <- dbinom(toss,2,0.4)
+prb
+prb <- dbinom(toss,2,0.5)
+prb
+toss <- seq(1,2,by=1)
+prb <- dbinom(toss,3,0.5)
+prb
+df <- data.frame(toss,prb)
+plot1 <- ggplot(df, aes(x = toss, y = prb)) + geom_bar(stat = "identity", col = "pink", fill = "pink") +
+scale_y_continuous(expand = c(0.01, 0)) + xlab("x") + ylab("Density") +
+labs(title = "dbinom(x, 20, 0.5)") + theme_bw(16, "serif") +
+theme(plot.title = element_text(size = rel(1.2), vjust = 1.5))
+plot1
+toss <- seq(1,8,by=1)
+prb <- dbinom(toss,3,0.5)
+prb
+outcomes      <- c("heads", "tails")
+sim_fair_coin <- sample(outcomes, size = 200, replace = TRUE)
+x <- as.data.frame(sim_fair_coin)
+ggplot(x, aes(factor(sim_fair_coin))) + geom_bar(width=.5)
+x <- as.data.frame(sim_fair_coin)
+ggplot(x, aes(factor(sim_fair_coin))) + geom_bar(width=.5)
+sim_fair_coin <- sample(outcomes, size = 200, replace = TRUE)
+x <- as.data.frame(sim_fair_coin)
+ggplot(x, aes(factor(sim_fair_coin))) + geom_bar(width=.5)
+sim_fair_coin <- sample(outcomes, size = 200, replace = TRUE)
+x <- as.data.frame(sim_fair_coin)
+ggplot(x, aes(factor(sim_fair_coin))) + geom_bar(width=.5)
+sim_fair_coin <- sample(outcomes, size = 200, replace = TRUE)
+x <- as.data.frame(sim_fair_coin)
+ggplot(x, aes(factor(sim_fair_coin))) + geom_bar(width=.5)
+z <- dbinom(1:10,10,0.5)
+z
+y <- dbinom(1:2,3,0.5)
+y
+y <- dbinom(1:3,3,0.5)
+y
+y <- dbinom(0:3,3,0.5)
+y
+barplot(y)
+y <- dbinom(0:9,9,0.5)
+barplot(y)
+y
+table(y)
+y <- dbinom(0:9,9,0.5)
+table(y)
+y
+num_flip <- 0:9
+tot <- 9
+prb <- 0.5
+y <- dbinom(num_flip,tot,prb)
+barplot(y)
+num_flip <- 3
+tot <- 9
+prb <- 0.5
+y <- dbinom(num_flip,tot,prb)
+y
+num_flip <- 2
+tot <- 3
+prb <- 0.5
+y <- dbinom(num_flip,tot,prb)
+y
+barplot(y)
+num_flip <- 5
+tot <- 9
+prb <- 0.5
+y <- dbinom(num_flip,tot,prb)
+y
+num_flip <- 0:9
+tot <- 9
+prb <- 0.5
+y <- dbinom(num_flip,tot,prb)
+y
+barplot(y)
+setwd("C:/Users/Dhanasekaran N/Desktop/iPrimed/Technical 2/DAY8/code")
+num_flip <- 0:3
+tot <- 3
+prb <- 0.5
+y <- dbinom(num_flip,tot,prb)
+y
+barplot(y)
+num_flip <- 0:9
+tot <- 9
+prb <- 0.5
+y <- dbinom(num_flip,tot,prb)
+y
+barplot(y)
+class(y)
+df <- data.frame(num_flip,y)
+df
+num_flip <- 0:9
+tot <- 9
+prb <- 0.5
+y <- dbinom(num_flip,tot,prb)
+y
+barplot(y)
+Y(5)
+class(y)
+y(5)
+y(c(5))
+y[5]
+num_flip <- 0:1000
+tot <- 1000
+prb <- 0.5
+y <- dbinom(num_flip,tot,prb)
+y
+barplot(y)
+y[450]
+v1 <- c(3,6,7,11,13,22,30,40,44,50,52,61,68,80,94)
+v1 <- c(3,6,7,11,13,22,30,40,44,50,52,61,68,80,94)
+length(v1)
+mean(v1)
+median(v1)
+mode(v1)
+range(v1)
+quantile(v1)
+v1 <- as.numeric(v1)
+length(v1)
+mean(v1)
+median(v1)
+mode(v1)
+range(v1)
+quantile(v1)
+v2 <- c(3,6,7,11,13,22,30,40)
+median(v2)
+v3 <- c(40,44,50,52,61,68,80,94)
+median(v3)
+#################
+rohit <- c(2,15,137,100,5,32,0,97,13,6)
+mean(rohit)
+sd(rohit)
+var(rohit)
+range(rohit)
+#### Bell curve
+x <- seq(-10, 10, by = .1)
+y <- dnorm(x, mean = 2.5, sd = 2)
+y
+plot(x,y)
+x = c(2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)
+x <- c(2,2,2,2,2,3,3,3,4,4,4,4,5,5,6,7,9)
+y <- dnorm(x, mean = mean(x), sd = sd(x))
+plot(x,y)
+x = c(2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)
+y <- dnorm(x, mean = mean(x), sd = sd(x))
+plot(x,y)
+###### categorical vaiable
+grade <- c("D","D","F","F","F","F","F","S","S","S","S","S","T","T","T")
+barplot(table(grade))
+pie(table(grade))
+age <- c(seq(10,100,by=2),seq(101,140))
+hist(age)
+boxplot(age)
+boxplot(x)
+quantile(x)
+a = c(1,2,3,4,5)
+sd(a)
